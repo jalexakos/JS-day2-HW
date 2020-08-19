@@ -21,7 +21,7 @@ let person3 = {
 // --------------------- ANSWER FROM JOSH ---------------------------- //
 
 function mainFoodGroups(obj) {
-    for(let i = 0; i < Object.keys(obj).length; i++){
+    for(let i = 0; i < Object.values(obj).length; i++){
         console.log(Object.values(obj)[i])
     };
 }
@@ -52,9 +52,9 @@ function Person(name,age){
     }
 
     // Create another arrow function for the addAge method that takes a single parameter
-    this.addAge = () => {
-        this.age++
-        return 'Another year goes by...'
+    this.addAge = (years) => {
+        this.age += years
+        return `Another ${years} year(s) goes by...`
     }
 }
 
@@ -65,9 +65,10 @@ console.log(tommy.printInfo());
 console.log(cameron.printInfo());
 
 // Adding to the age 
-console.log(tommy.addAge());
-console.log(tommy.addAge());
-console.log(tommy.addAge());
+// console.log(tommy.addAge());
+// console.log(tommy.addAge());
+// console.log(tommy.addAge());
+console.log(tommy.addAge(5));
 console.log(tommy.printInfo());
 
 // =============Exercise #3 ============//
@@ -90,14 +91,24 @@ let wordLengthCounter = (str) => {
     })
 }
 
-wordLengthCounter("Indubitably").then((result) => {
-    console.log(result)
-}).catch((error) => {
-    console.log(error)
-});
+// wordLengthCounter("Indubitably").then((result) => {
+//     console.log(result)
+// }).catch((error) => {
+//     console.log(error)
+// });
 
-wordLengthCounter("tiny").then((result) => {
-    console.log(result)
-}).catch((error) => {
-    console.log(error)
-});
+// wordLengthCounter("tiny").then((result) => {
+//     console.log(result)
+// }).catch((error) => {
+//     console.log(error)
+// });
+
+function call(str){
+    wordLengthCounter(str).then((result) => {
+        console.log(result)
+    }).catch((error) => {
+        console.log(error)
+    });
+} // This is super useful - you can use the promise as a function that does the work of case and error checking.
+
+call('Indubitably');
